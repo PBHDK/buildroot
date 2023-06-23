@@ -20,7 +20,7 @@ let
         expect
         file
         flex
-        gcc
+        pkgs-unstable.gcc-arm-embedded
 	glibc
         git
         gitRepo
@@ -77,6 +77,7 @@ let
       profile = ''
         export PATH="${file}/bin:$PATH"
         export ENVFS_RESOLVE_ALWAYS="1"
+	export LD_LIBRARY_PATH=${pkgs-unstable.gcc-arm-embedded}/lib:$LD_LIBRARY_PATH
       '';
       extraOutputsToInstall = [ "dev" ];
     };
